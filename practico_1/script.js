@@ -1,4 +1,8 @@
 let edad;
+//definiendo edades por que es buena practica
+const precioMenor13 = 1000;
+const precioEntre13y17 = 1500;
+const precioMayor17 = 2000;
 
 while (true) {
     const edadStr = prompt("¿Cuál es tu edad?");
@@ -10,13 +14,17 @@ while (true) {
         alert("Por favor, ingrese una edad válida (un número mayor o igual a cero).");
     }
 }
+//defino el mensaje final con un poco mas de informacion para solo hacer una alert
+let mensajeFinal = ""
 
 if (edad <= 5 || edad >= 80) {
-    alert("Entrada gratuita.");
+    mensajeFinal = `Edad ${edad}: la entrada es gratuita`;
 } else if (edad < 13) {
-    alert("El precio de la entrada es $1000.");
+    mensajeFinal = `Edad ${edad}: el precio de la entrada es $${precioMenor13}.`;
 } else if (edad >= 13 && edad <= 17) {
-    alert("El precio de la entrada es $1500.");
+    mensajeFinal = `Edad ${edad}: el precio de la entrada es $${precioEntre13y17}.`;
 } else {
-    alert("El precio de la entrada es $2000.");
+    mensajeFinal = `Edad ${edad}: el precio de la entrada es $${precioMayor17}.`;
 }
+
+alert(mensajeFinal)
