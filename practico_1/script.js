@@ -1,5 +1,4 @@
 let edad;
-//definiendo edades por que es buena practica
 const precioMenor13 = 1000;
 const precioEntre13y17 = 1500;
 const precioMayor17 = 2000;
@@ -14,7 +13,7 @@ while (true) {
         alert("Por favor, ingrese una edad válida (un número mayor o igual a cero).");
     }
 }
-//defino el mensaje final con un poco mas de informacion para solo hacer una alert
+
 let mensajeFinal = ""
 
 if (edad <= 5 || edad >= 80) {
