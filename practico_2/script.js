@@ -1,7 +1,7 @@
 let cuenta;
 
 while (true) {
-    const cuentaStr = prompt("Ingrese el total de la cuenta:");
+    const cuentaStr = prompt("Ingrese el total de la cuenta:");//ustar Str ayuda a identificar el tipo de variable str, int, float
     cuenta = parseFloat(cuentaStr);
     if (!isNaN(cuenta) && cuenta > 0) {
         break;
