@@ -5,8 +5,7 @@ while (true) {
     edad = parseInt(edadStr);
 
     if (!isNaN(edad) && edad >= 0) {
-        // numero válido (no NaN) y es mayor o igual a 0
-        break; // Salimgo del bucle while porque la edad es válida
+        break; 
     } else {
         alert("Por favor, ingrese una edad válida (un número mayor o igual a cero).");
     }
