@@ -5,7 +5,7 @@ let altura;
 while (true) { 
     const inputPeso = prompt("Ingrese su peso en kg (ej: 70.5)");
     peso = parseFloat(inputPeso); 
-    if (!isNaN(peso) && peso > 0) {
+    if (!isNaN(peso) && peso > 0 && peso < 700) {
         break; 
     } else {
         alert("Peso inválido. Ingrese Nuevamente.");
@@ -15,9 +15,8 @@ while (true) {
 while (true) {
     const inputAltura = prompt("Ingrese su altura en metros (ej: 1.80)");
     altura = parseFloat(inputAltura); 
-    // convertir la entrada a número
 
-    if (!isNaN(altura) && altura > 0) {
+    if (!isNaN(altura) && altura > 0 && altura < 3) {
         break; 
     } else {
         alert("Altura inválida. Ingrese nuevamente.");
