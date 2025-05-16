@@ -5,8 +5,8 @@ const agregarFruta = () => {
     const nuevaFruta = document.getElementById('nuevaFruta').value
     frutas.push(nuevaFruta)
     alert(`Nueva fruta agregada: ${nuevaFruta}`)
-
     console.log("frutas: ", frutas);
+    mostrarFrutas()
 }
 
 const eliminarFruta = () => {
@@ -19,7 +19,7 @@ const eliminarFruta = () => {
 
 const mostrarFrutas = () => {
     const listaFrutas = document.getElementById("listaFrutas")
-    listaFrutas.inertHTML = ''
+    listaFrutas.innerHTML = ''
     frutas.forEach(frutas => {
         const li = document.createElement('li')
         li.innerText = frutas
