@@ -5,20 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestor de Peliculas</title>
 </head>
-
 <body>
-<div class="contenedor-agregar-peliculas">
-    <h2>Agregar Peliculas</h2>
-    <div class="agregar-peliculas">
-        <input id="nuevaPelicula" type="text" placeholder="ingresar nombre de peliculas">
-        <button onclick="agregarPelicula()"> Agregar </button>
-    </div>
-    <p id="errorMensaje"></p>
-    <h3>peliculas Agregadas</h3>
-    <ul id="listaPeliculas"></ul>
-</div>
+    <h1>Gestor de Peliculas</h1>
+    <form id="crearPelicula" onsubmit="agregarPeliculas(); return false">
+        <input type="text" id="pelicula" placeholder="Pelicula" required />
+        <button type="submit">Agregar Plicula</button>
+    </form>
+    
+    <br>
+
+    <section class="tablaPeliculas">
+        <h2>Tablon de Peliculas</h2>
+        <table border="1" id="tablaPeliculas">
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Pelicula</th>
+                    <th>Agregar a Favoritos</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>    
+            </tbody>
+        </table>
+    </section>
+    
+    <br>
+    
+    <section class="tablaFavoritos">
+        <h2>Tablon de Peliculas Favoritas</h2>
+        <table border="1" id="tablaFavoritos">
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Pelicula</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>    
+            </tbody>
+        </table>
+    </section>
     <script src="./js/script.js"></script>
 </body>
 </html>
-
-

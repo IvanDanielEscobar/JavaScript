@@ -1,34 +1,103 @@
-let peliculas = ["El Padrino", "Gladiador", "Matrix"]
+let peliculas = JSON.parse(localStorage.getItem("peliculas")) || []
+let peliculasFavoritas = JSON.parse(localStorage.getItem("peliculasFavoritas")) || []
 
-const boton = document.getElementById('agregarPelicula')
-const input = document.getElementById('nuevaPelicula')
-const listaPeliculas = document.getElementById('listaPeliculas')
-const errorMensaje = document.getElementById('errorMensaje')
 
-const mostrarPeliculas = () => {
-    listaPeliculasUl .innerText = ''
+const agregarPeliculas = () => {
+    const pelicula = document.getElementById("pelicula").value.trim()
 
-    peliculas.forEach( pelicula => {
-        const li = document.createElement(li)
-        li.innerText = pelicula
-        listaPeliculasUl.appendChild(li)
-    })
-}
+    if (pelicula !== '') {
+        
+        peliculas.push({ pelicula })
+        
+        localStorage.setItem("peliculas", JSON.stringify(peliculas))
 
-const agregarPelicula = () => {
-    const nuevaPelicula = input.ariaValueMax.trim()
-    if (nuevaPelicula === '') {
-        errorMensaje.innerText = 'Ingreses un nombre de pelicula'
-    } else {
-        errorMensaje.innerText = ''
+        console.log("peliculas: ", peliculas)
+
+        renderizarPeliculas()
+         
+        document.getElementById("pelicula").value = ''
+        
     }
-
-peliculas.push(nuevaPelicula)
-input.value = ''
-mostrarPeliculas()
-console.log(`Peliculas: ${peliculas.join(', ')}; Pelicula Agregada: ${nuevaPelicula}`)
 }
 
-boton.addEventListener('click', agregarPelicula)
+const renderizarPeliculas = () => {
+    const tablaP = document.getElementById("tablaPeliculas").querySelector('tbody')
 
-moostrarPeliculas()
+    tablaP.innerHTML = ''
+    
+    peliculas.forEach((pelis, index) => {
+        const fila = document.createElement('tr')
+        
+        fila.innerHTML=`
+        <td>${index + 1}</td>
+        <td>${pelis.pelicula}</td>
+        <td>
+            <button onclick="agregarFavorito(${index})">Agregar</button>
+        </td>
+        <td>
+            <button onclick="eliminarPelicula(${index})">Eliminar</button>
+        </td>
+        `
+
+        tablaP.appendChild(fila)
+    })
+}  
+
+
+const renderizarFavoritos = () => {
+    const tablaF = document.getElementById("tablaFavoritos").querySelector('tbody')
+
+    tablaF.innerHTML = ''
+    
+    peliculasFavoritas.forEach((pelis, index) => {
+        const fila = document.createElement('tr')
+        
+        fila.innerHTML=`
+        <td>${index + 1}</td>
+        <td>${pelis.pelicula}</td>
+        <td>
+            <button onclick="eliminarFavorito(${index})">Eliminar</button>
+        </td>
+        `
+
+        tablaF.appendChild(fila)
+    })
+}  
+
+const agregarFavorito = (index) =>{
+
+    const peliculaFavorita = peliculas[index]
+        
+    peliculasFavoritas.push(peliculaFavorita)
+        
+    localStorage.setItem("peliculasFavoritas", JSON.stringify(peliculasFavoritas))
+
+    peliculas.splice(index, 1)
+
+    localStorage.setItem("peliculas", JSON.stringify(peliculas))
+
+    renderizarFavoritos()
+    renderizarPeliculas()
+}
+
+
+const eliminarPelicula = (index) => {
+    peliculas.splice(index, 1)
+
+    localStorage.setItem("peliculas", JSON.stringify(peliculas))
+
+    renderizarPeliculas()
+}
+
+const eliminarFavorito = (index) => {
+    peliculasFavoritas.splice(index, 1)
+
+    localStorage.setItem("peliculasFavoritas", JSON.stringify(peliculasFavoritas))
+
+    renderizarFavoritos()
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderizarPeliculas()
+    renderizarFavoritos()
+})
