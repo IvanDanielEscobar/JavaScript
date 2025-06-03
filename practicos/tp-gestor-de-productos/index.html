@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de productos</title>
+</head>
+<body>
+    <form id="crearproductos" onsubmit="agregarProductos(); return false">
+        <input type="text" id="nombre" placeholder="nombre del producto" required />
+        <input type="text" id="categoria" placeholder="categoria del producto" required />
+        <input type="float" id="precio" placeholder="precio del producto" required />
+        <button type="submit">Agregar Producto</button>
+    </form>
+    
+    <br>
+
+    <table border="1" id="tablaProductos">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Nombre</th>
+                <th>Categoria</th>
+                <th>Precio</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <p id="totalProductos"></p>
+    
+    <script src="./js/script.js"></script>
+</body>
+</html>
