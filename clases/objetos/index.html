@@ -11,65 +11,71 @@
 </head>
 
 <body>
-    <header class="text-center"> 
-        <h1>Registro de Autos</h1>
-        <div class="container">
-            <form id="crearAutos" onsubmit="agregarAutos(); return false">
-                <article class="input-group mb-3">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Marca</span>
-                    <input id="marca" type="text" class="form-control" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-default" required />
-                </article>
-                <article class="input-group mb-3">
-                    <span class="input-group-text">Modelo</span>
-                    <input id="modelo" type="text" class="form-control" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-default" required />
-                </article><article class="input-group mb-3">
-                    <span class="input-group-text">Año</span>
-                    <input id="anio" type="number" class="form-control" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-default" required />
-                </article>
-                <button type="submit" class="btn btn-secondary">Agregar Auto</button>
-            </form>
-        </div>
-    </header>
+    <div class="row">
+        <header class="col-4 text-center">
+            <h1>Registro de Autos</h1>
+            <div class="container">
+                <form id="crearAutos" onsubmit="agregarAutos(); return false">
+                    <article class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Marca</span>
+                        <input id="marca" type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" />
+                    </article>
+                    <article class="input-group mb-3">
+                        <span class="input-group-text">Modelo</span>
+                        <input id="modelo" type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" required />
+                    </article>
+                    <article class="input-group mb-3">
+                        <span class="input-group-text">Año</span>
+                        <input id="anio" type="number" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" required />
+                    </article>
+                    <button type="submit" class="btn btn-primary">Agregar Auto</button>
+                </form>
+            </div>
+        </header>
 
-    <main class="container">
-    <section id="filtros" class="container">
-        <h3>Filtros</h3>
-        <div class="row">
-            <article class="col">
-            <!-- Filtrar autos por busqueda de marca -->
-                <input type="text" id="busqueda" placeholder="Buscar marca..." oninput="filtrarAutos()">
-            </article>
-            <article class="col">
-                <!-- Filtrar autos por selector de marca -->
-                <select id="filtroMarca" onchange="filtrarPorMarca()">
-                    <option value="todas">Todas</option>
-                </select>
-            </article>
-        </div>
-    </section>
-    <br>
-    
-    <section id="tabla" class="container">
-        <table id="tablaAutos" class="table table-dark table-striped-columns">
-            <thead>
-              <tr>
-                <th scope="col">N°</th>
-                <th scope="col">Marca</th>
-                <th scope="col">Modelo</th>
-                <th scope="col">Año</th>
-                <th scope="col">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </section>
+        <main class="col-6">
+            <section id="filtros" class="container">
+                <h3>Filtros</h3>
+                <div class="row">
+                    <article class="col">
+                        <!-- Filtrar autos por busqueda de marca -->
+                        <input type="text" id="busqueda" placeholder="Buscar marca..." oninput="filtrarAutos()">
+                    </article>
+                    <article class="col">
+                        <!-- Filtrar autos por selector de marca -->
+                        <select id="filtroMarca" onchange="filtrarPorMarca()">
+                            <option value="todas">Todas</option>
+                        </select>
+                    </article>
+                    <article class="col">
+                        <button class="btn btn-primary" onclick="ordenarPorAnio()">Ordenar por año</button>
+                    </article>
+                </div>
+            </section>
+            <br>
 
-    
-    </main>
+            <section id="tabla" class="container">
+                <table id="tablaAutos" class="table table-dark table-striped-columns">
+                    <thead>
+                        <tr>
+                            <th scope="col">N°</th>
+                            <th scope="col">Marca</th>
+                            <th scope="col">Modelo</th>
+                            <th scope="col">Año</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </section>
+
+
+        </main>
+    </div>
     <section id="resumen" class="text-start">
         <div class="container">
             <h3>Resumen de autos</h3>

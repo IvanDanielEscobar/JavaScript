@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <title>Gestor de Libros</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <h1 class="mt-5 text-center text-white">Gestor de Libros</h1>
+    <div class="container text-center text-white">
+        <header class="row align-items-start">
+            <section id="crearLibros" class="col">
+                <form class="card" onsubmit="agregarLibros()">
+                    <article class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Titulo</span>
+                        <input id="titulo" type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                    </article>
+                    <article class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Autor</span>
+                        <input id="autor" type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                    </article>
+                    <article class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Año</span>
+                        <input id="anio" type="number" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                    </article>
+                    <article class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Genero</span>
+                        <input id="genero" type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                    </article>
+                    <button type="submit" class="btn btn-primary">Agregar Libro</button>
+                </form>
+            </section>
+            <section class="col">
+                <h3 class="card-title text-white">Resumen de Libros</h3>
+                <p class="card-text" id="resumenLibros"></p>
+            </section>
+        </header>
+    </div>
+
+    <section class="filtros container">
+        <h3 class="text-white">Filtros</h3>
+        <div class="row">
+            <article class="col">
+                <!-- Filtrar libros por busqueda de titulo -->
+                <input type="text" id="busqueda" placeholder="Buscar titulo..." oninput="filtrarLibros()">
+            </article>
+            <article class="col">
+                <!-- Filtrar libros por selector de genero -->
+                <select id="filtroGenero" onchange="filtrarPorGenero()">
+                    <option value="todas">Todas</option>
+                </select>
+            </article>
+            <article class="col">
+                <button class="btn btn-primary" onclick="ordenarPorAnio()">Ordenar por año</button>
+            </article>
+        </div>
+    </section>
+    <main class="container">
+
+
+        <section id="tabla" class="container">
+            <table id="tablaLibros" class="table table-dark table-striped-columns">
+                <thead>
+                    <tr>
+                        <th scope="col-2">N°</th>
+                        <th scope="col-2">Titulo</th>
+                        <th scope="col-2">Autor</th>
+                        <th scope="col-2">Año</th>
+                        <th scope="col-2">Genero</th>
+                        <th scope="col-2">Acciones</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </section>
+
+
+
+    </main>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

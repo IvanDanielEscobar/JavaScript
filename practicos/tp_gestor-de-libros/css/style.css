@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    box-sizing: content-box;
+}
+
+:root {
+    --color-azul-gris: #7F9BB0;
+    --color-gris: #778087;
+    --color-celeste: #79B1DB;
+    --color-gris-oscuro: #45525C;
+    --color-negro: #1E2A33;
+    --color-azul-oscuro: #152633;    
+
+    --color-blanco: white;
+    --color-texto-black: black;
+}
+body {
+    background-color:var(--color-azul-oscuro);
+}
+header {
+    margin: 70px;
+}
+
+.card {
+    background-color: var(--color-gris);
+    padding: 20px;
+    max-width: 500px;
+}
+.card .input-group-text {
+    min-width: 50px;
+}
+
+

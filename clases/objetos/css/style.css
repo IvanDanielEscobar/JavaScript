@@ -32,13 +32,17 @@ body {
 header {
     background-color: var(--color-negro);
     color: var(--color-blanco);
-    padding: 80px;
+    padding: 80px 150px;
+}
+header form {
+    padding: 120px;
 }
 
 
 #crearAutos .input-group-text {
     min-width: 90px;
 }
+
 
 main {
     color: var(--color-blanco);

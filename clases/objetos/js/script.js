@@ -2,6 +2,7 @@ let autos = JSON.parse(localStorage.getItem("autos")) || []
 
 let editando = false;
 let indiceEditar = null;
+let ordenAscendente = false;
 
 const agregarAutos = () => {
     const marca = document.getElementById("marca").value.trim()
@@ -17,6 +18,15 @@ const agregarAutos = () => {
 
             document.querySelector('button[type=submit]').innerText = 'Agregar Auto'
         } else {
+            const yaExiste = autos.some(auto=>
+                auto.marca.toLowerCase() === marca.toLowerCase() && 
+                auto.modelo.toLowerCase() === modelo.toLowerCase()
+            )
+            if(yaExiste){
+                alert("Este auto ya esta registrado en el listado")
+                return
+            }
+
             autos.push({ marca, modelo, anio })
         }
             
@@ -77,6 +87,24 @@ const editarAuto = (index) => {
     indiceEditar = index
 }
 
+const eliminarAuto = (index) => {
+    autos.splice(index, 1)
+
+    localStorage.setItem("autos", JSON.stringify(autos))
+
+    renderizarAutos()
+    mostrarResumen()
+}
+
+const ordenarPorAnio = () => {
+    const autosOrdenados = [...autos].sort((a, b)=>{
+        return ordenAscendente ? a.anio - b.anio : b.anio - a.anio
+    })
+
+    ordenAscendente = !ordenAscendente
+    renderizarAutos(autosOrdenados)
+}
+
 const mostrarResumen = () => {
     const resumen = document.getElementById('resumenAutos') 
     
@@ -109,15 +137,6 @@ const mostrarResumen = () => {
     <p>Auto mas nuevo: ${autoNuevo.marca} ${autoNuevo.modelo} ${autoNuevo.anio}</p>
     <p>Auto mas viejo: ${autoViejo.marca} ${autoViejo.modelo} ${autoViejo.anio}</p>
     `
-}
-
-const eliminarAuto = (index) => {
-    autos.splice(index, 1)
-
-    localStorage.setItem("autos", JSON.stringify(autos))
-
-    renderizarAutos()
-    mostrarResumen()
 }
 
 const actualizarSelectMarca = () => {
