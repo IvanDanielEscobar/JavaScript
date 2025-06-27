@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <h1 class="mt-5 text-center text-white">Gestor de Libros</h1>
+    <h1 class="mt-5 mb-5 text-center text-white">Gestor de Libros</h1>
     <div class="container text-center text-white">
         <header class="row align-items-start">
             <section id="crearLibros" class="col">
@@ -36,33 +36,57 @@
                         <input id="genero" type="text" class="form-control" aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-default">
                     </article>
+                    <article class="form-check text-start mb-3 ms-2">
+                        <input class="form-check-input" type="checkbox" id="leido">
+                        <label class="form-check-label" for="leido">
+                            ¿Leido?
+                        </label>
+                    </article>
                     <button type="submit" class="btn btn-primary">Agregar Libro</button>
                 </form>
             </section>
-            <section class="col">
-                <h3 class="card-title text-white">Resumen de Libros</h3>
+            <section class="col text-start">
+                <h3 class=" card-title text-white">Resumen de Libros</h3>
                 <p class="card-text" id="resumenLibros"></p>
             </section>
         </header>
     </div>
 
-    <section class="filtros container">
-        <h3 class="text-white">Filtros</h3>
-        <div class="row">
-            <article class="col">
+    <section class="filtros container text-center mb-4">
+
+        <h3 class="text-white ">Filtros</h3>
+
+        <section class="row justify-content-center">
+
+            <article class="col-3 text-start">
                 <!-- Filtrar libros por busqueda de titulo -->
-                <input type="text" id="busqueda" placeholder="Buscar titulo..." oninput="filtrarLibros()">
+                <label class="text-white d-block text-center">Buscar por Titulo</label>s
+                <input type="text" class="form-control" id="busqueda" placeholder="Buscar titulo..."
+                    oninput="filtrarLibros()">
             </article>
-            <article class="col">
+
+            <article class="col-3 text-center mt-4">
+                <button class="btn btn-outline-secondary text-white w-50" onclick="ordenarPorAnio()">
+                    Ordenar por año</button>
+            </article>
+
+            <article class="col-3 text-start">
                 <!-- Filtrar libros por selector de genero -->
-                <select id="filtroGenero" onchange="filtrarPorGenero()">
+                <label class="text-white d-block">Filtrar por genero</label>
+                <select class="form-select bg-dark text-white" id="filtroGenero" onchange="filtrarPorGenero()">
                     <option value="todas">Todas</option>
                 </select>
             </article>
-            <article class="col">
-                <button class="btn btn-primary" onclick="ordenarPorAnio()">Ordenar por año</button>
+
+            <article class="col-2 text-start">
+                <label class="text-white d-block">Filtrar por estado</label>
+                <select class="form-select bg-dark text-white" id="filtroEstado" onchange="filtrarPorEstado()">
+                    <option value="todas">Todos</option>
+                </select>
             </article>
-        </div>
+
+        </section>
+
     </section>
     <main class="container">
 
@@ -77,6 +101,7 @@
                         <th scope="col-2">Año</th>
                         <th scope="col-2">Genero</th>
                         <th scope="col-2">Acciones</th>
+                        <th scope="col-1">Estado</th>
 
                     </tr>
                 </thead>
@@ -85,9 +110,6 @@
                 </tbody>
             </table>
         </section>
-
-
-
     </main>
     <script src="js/script.js"></script>
 </body>

@@ -30,4 +30,7 @@ header {
     min-width: 50px;
 }
 
+.filtros .form-select {
+    max-width: 100px;
+}
 
