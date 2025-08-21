@@ -215,7 +215,6 @@ const actualizarSelectEstado = () => {
     
 }
 
-
 const filtrarPorEstado = () => {
     const estadoSeleccionado = document.getElementById('filtroEstado').value
     
