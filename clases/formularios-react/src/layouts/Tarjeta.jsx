@@ -17,22 +17,31 @@ const Tarjeta = () => {
     const [color, setColor] = useState("gray");
     const toast = useRef(null);
 
+    const guardarEnLocalStorage = (persona) => {
+        const existente = localStorage.getItem('personas')
+        const lista = existente ? JSON.parse(existente):[]
+        lista.push(persona)
+        localStorage.setItem('personas', JSON.stringify(lista))
+    }
     const confirmarForm = () => {
         Swal.fire({
               title: "Desea confirmar los datos?",
               text: `Nombre : ${nombre || `Sin nombre` } | Color: ${color}`,
               icon: 'question',
               showCancelButton: true,
-
               confirmButtonText:'Guardar',
               cancelButtonText:'Cancelar'         
         }).then((result)=>{
             if(result.isConfirmed){
+                guardarEnLocalStorage({
+                    nombre: nombre || 'Sin nombre',
+                    color: color || 'Sin color',
+                    createdAt: new Date()
+                })
                 toast.current?.show({
                     severity: "success",
                     summary: 'Guardado',
                     detail: 'Tarjeta de presentacion guardada',
-                    
                 })
             }
         })
