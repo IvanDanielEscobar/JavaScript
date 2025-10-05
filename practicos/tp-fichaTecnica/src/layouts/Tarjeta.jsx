@@ -11,11 +11,9 @@ const opcionesColor = [
     { label: 'Rojo', value: 'red' },
     { label: 'Amarillo', value: 'yellow' },
     { label: 'Verde', value: 'green' },
-];
+];  
+    
 
-const emailValido = email.includes("@") && email.includes(".");
-
-const Invalido = !nombre || !emailValido || color === "gray" || !checkTerms;
 
 
 const Tarjeta = () => {
@@ -24,6 +22,11 @@ const Tarjeta = () => {
     const [color, setColor] = useState("gray");
     const [checkTerms, setCheckTerms] = useState(false)
     const toast = useRef(null);
+    const emailValido = email?.includes("@") && email?.includes(".");
+    const Invalido = !nombre || !emailValido || color === "gray" || !checkTerms;
+    
+
+    
 
     const guardarEnLocalStorage = (persona) => {
         const existente = localStorage.getItem('personas')

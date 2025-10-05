@@ -1,0 +1,18 @@
+body {
+    background-color: black;
+}
+
+.contenedor-tablas{
+    height: auto;
+    width: 100%;
+    margin: 20px;
+}
+
+.tabla-pokemons{
+    width: 100%;
+    margin: 20px;
+}
+.tabla-habilidades{
+    width: 100%;
+    margin: 20px;
+}
