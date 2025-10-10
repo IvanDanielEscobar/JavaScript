@@ -5,8 +5,11 @@ const Home = () => {
     const navigate = useNavigate()
     
     return (
+        <div>
         <Button label="Ir al Formulario" onClick={()=> navigate('/tarjeta')} />
 
+        <Button label="ver personas" onClick={()=> navigate('/personas')} />
+        </div>
     )
 }
 

@@ -2,8 +2,10 @@ import { useRef, useState, Fragment } from "react";
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { SelectButton } from 'primereact/selectbutton';
+import { Checkbox } from 'primereact/checkbox';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
+import Personas from "./Personas";
 import Swal from "sweetalert2";
 
 const opcionesColor = [
@@ -15,7 +17,13 @@ const opcionesColor = [
 const Tarjeta = () => {
     const [nombre, setNombre] = useState("");
     const [color, setColor] = useState("gray");
+    const [email, setEmail] = useState('');
+    const [acepta, setAcepta] = useState(false);
     const toast = useRef(null);
+
+    const emailValido = email.includes('@') && email.includes('.')
+    const formValido = nombre.trim() !== "" && emailValido && color !== 'gray' && acepta !== false
+
 
     const guardarEnLocalStorage = (persona) => {
         const existente = localStorage.getItem('personas')
@@ -23,10 +31,17 @@ const Tarjeta = () => {
         lista.push(persona)
         localStorage.setItem('personas', JSON.stringify(lista))
     }
+
+    const borrarDatosFotmulario = () => {
+        setNombre("")
+        setEmail('')
+        setColor("gray")
+        setAcepta(false) 
+    }
     const confirmarForm = () => {
         Swal.fire({
               title: "Desea confirmar los datos?",
-              text: `Nombre : ${nombre || `Sin nombre` } | Color: ${color}`,
+              text: `Nombre : ${nombre || `Sin nombre` } | Email: ${email}| Color: ${color}`,
               icon: 'question',
               showCancelButton: true,
               confirmButtonText:'Guardar',
@@ -35,7 +50,9 @@ const Tarjeta = () => {
             if(result.isConfirmed){
                 guardarEnLocalStorage({
                     nombre: nombre || 'Sin nombre',
+                    email,
                     color: color || 'Sin color',
+                    aceptaTerminos: acepta,
                     createdAt: new Date()
                 })
                 toast.current?.show({
@@ -61,7 +78,18 @@ const Tarjeta = () => {
                         />
                         <label htmlFor="nombre">Nombre</label>
                     </span>
+                    {!nombre.trim() && <p>Debes esctibir tu nombre</p>}
                 </div>
+
+                <span className="p-float-label">
+                    <InputText 
+                    id='email'
+                     value={email}
+                      onChange={(e) => setEmail(e.target.value)} 
+                      />
+                    <label htmlFor="email">Email</label>
+                </span>
+                {!email && !emailValido && <p>Email invalido</p>}
 
                 <div>
                     <small>Color de Fondo</small>
@@ -70,6 +98,12 @@ const Tarjeta = () => {
                         onChange={(e) => setColor(e.value)}
                         options={opcionesColor}
                     />
+                </div>
+
+                <div>
+                    <span className="p-float-label">Acepta los Terminos?
+                        <Checkbox inputId="acepta" checked={acepta} onChange={(e)=>setAcepta(e.checked)}/>
+                    </span>
                 </div>
             </Card>
 
@@ -98,8 +132,7 @@ const Tarjeta = () => {
                 icon='pi pi-eraser'
                 style={{margin: 20}}
                 onClick={()=> {
-                    setNombre("")
-                    setColor("gray")       
+                    borrarDatosFotmulario()      
                 }}
                 />
             </div>
